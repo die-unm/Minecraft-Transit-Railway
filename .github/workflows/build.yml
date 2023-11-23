@@ -8,7 +8,8 @@ jobs:
       matrix:
         # minecraft: [ 1.16.5, 1.17.1, 1.18.2, 1.19.2, 1.19.3, 1.19.4 ]
         minecraft: [ 1.19.2 ]
-        variation: [ normal, server, lifts ]
+        # variation: [ normal, server, lifts ]
+        variation: [ normal ]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
