@@ -61,7 +61,7 @@ public abstract class Train extends NameColorDataBase implements IPacket {
 
 	private final float railLength;
 
-	public static final float ACCELERATION_DEFAULT = 0.006F; // 0.006m/tick^2 = 2.4m/s^2 = 8.64km/h/s
+	public static final float ACCELERATION_DEFAULT = 0.01F; // 0.01m/tick^2 = 4.0m/s^2 = 14.4km/h/s
 	public static final float MAX_ACCELERATION = 0.05F; // 0.05m/tick^2 = 20m/s^2 = 72km/h/s
 	public static final float MIN_ACCELERATION = 0.001F; // 0.001m/tick^2 = 1m/s^2 = 3.6km/h/s
 	public static final float BRAKING_POWER_DEFAULT = 0.01F; // 0.01m/tick^2 = 4.0m/s^2 = 14.4km/h/s
