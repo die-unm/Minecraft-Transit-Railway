@@ -18,14 +18,14 @@ public class UpdateBlueMap implements IGui, IUpdateWebMap {
 
 	public static void updateBlueMap(Level world, RailwayData railwayData) {
 		try {
-			updateBlueMap(world, railwayData.stations, MARKER_SET_STATIONS_ID, MARKER_SET_STATIONS_TITLE, MARKER_SET_STATION_AREAS_ID, MARKER_SET_STATION_AREAS_TITLE, STATION_ICON_PATH);
-			updateBlueMap(world, railwayData.depots, MARKER_SET_DEPOTS_ID, MARKER_SET_DEPOTS_TITLE, MARKER_SET_DEPOT_AREAS_ID, MARKER_SET_DEPOT_AREAS_TITLE, DEPOT_ICON_PATH);
+			updateBlueMap(world, railwayData.stations, MARKER_SET_STATIONS_ID, MARKER_SET_STATIONS_TITLE, MARKER_SET_STATION_AREAS_ID, MARKER_SET_STATION_AREAS_TITLE, STATION_ICON_PATH, false);
+			updateBlueMap(world, railwayData.depots, MARKER_SET_DEPOTS_ID, MARKER_SET_DEPOTS_TITLE, MARKER_SET_DEPOT_AREAS_ID, MARKER_SET_DEPOT_AREAS_TITLE, DEPOT_ICON_PATH, true);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	private static <T extends AreaBase> void updateBlueMap(Level world, Set<T> areas, String areasId, String areasTitle, String areaAreasId, String areaAreasTitle, String iconKey) {
+	private static <T extends AreaBase> void updateBlueMap(Level world, Set<T> areas, String areasId, String areasTitle, String areaAreasId, String areaAreasTitle, String iconKey, boolean hidden) {
 		final BlueMapAPI api = BlueMapAPI.getInstance().orElse(null);
 		if (api == null) {
 			return;
@@ -39,7 +39,7 @@ public class UpdateBlueMap implements IGui, IUpdateWebMap {
 
 		final int areaY = world.getSeaLevel();
 
-		final MarkerSet markerSetAreas = MarkerSet.builder().label(areasTitle).build();
+		final MarkerSet markerSetAreas = MarkerSet.builder().label(areasTitle).defaultHidden(hidden).build();
 		markerSetAreas.getMarkers().clear();
 		map.getMarkerSets().put(areasId, markerSetAreas);
 

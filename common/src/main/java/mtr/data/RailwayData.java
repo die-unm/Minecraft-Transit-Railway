@@ -2,6 +2,7 @@ package mtr.data;
 
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
+import de.bluecolored.bluemap.api.BlueMapAPI;
 import io.netty.buffer.Unpooled;
 import mtr.MTR;
 import mtr.Registry;
@@ -235,7 +236,9 @@ public class RailwayData extends PersistentStateMapper implements IPacket {
 		} catch (Exception ignored) {
 		}
 		try {
-			UpdateBlueMap.updateBlueMap(world, this);
+			BlueMapAPI.onEnable(api -> {
+				UpdateBlueMap.updateBlueMap(world, this);
+			});
 		} catch (NoClassDefFoundError | IllegalStateException ignored) {
 			System.out.println("BlueMap is not loaded");
 		} catch (Exception ignored) {
